@@ -1,4 +1,4 @@
-package ru.onlysq.chatreplies;
+package com.andrewimm.chatreplies;
 
 import com.mojang.brigadier.arguments.LongArgumentType;
 import net.fabricmc.api.ModInitializer;
@@ -16,10 +16,10 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.onlysq.chatreplies.api.ChatMessageRecord;
-import ru.onlysq.chatreplies.api.ChatReplies;
-import ru.onlysq.chatreplies.api.ChatRepliesApi;
-import ru.onlysq.chatreplies.api.ChatReplyListener;
+import com.andrewimm.chatreplies.api.ChatMessageRecord;
+import com.andrewimm.chatreplies.api.ChatReplies;
+import com.andrewimm.chatreplies.api.ChatRepliesApi;
+import com.andrewimm.chatreplies.api.ChatReplyListener;
 
 import java.time.Instant;
 import java.util.List;

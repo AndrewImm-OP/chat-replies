@@ -1,4 +1,4 @@
-package ru.onlysq.chatreplies.api;
+package com.andrewimm.chatreplies.api;
 
 @FunctionalInterface
 public interface ChatReplyListener {
