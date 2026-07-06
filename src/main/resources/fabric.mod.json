@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "chat_replies",
+  "version": "${version}",
+  "name": "Chat Replies",
+  "description": "Clickable Minecraft chat replies with a small public API for bridge mods.",
+  "authors": [
+    "OnlySQ"
+  ],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "ru.onlysq.chatreplies.ChatRepliesMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~26.1",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
