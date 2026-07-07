@@ -8,13 +8,10 @@
     "AndrewImm"
   ],
   "license": "MIT",
-  "environment": "*",
+  "environment": "server",
   "entrypoints": {
     "main": [
       "com.andrewimm.chatreplies.ChatRepliesMod"
-    ],
-    "client": [
-      "com.andrewimm.chatreplies.client.ChatRepliesClient"
     ]
   },
   "depends": {

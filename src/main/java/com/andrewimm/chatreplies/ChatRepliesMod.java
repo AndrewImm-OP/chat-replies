@@ -5,10 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.message.v1.ServerMessageEvents;
-import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
@@ -45,16 +42,11 @@ public final class ChatRepliesMod implements ModInitializer, ChatRepliesApi {
 
     @Override
     public void onInitialize() {
-        PayloadTypeRegistry.clientboundPlay().register(
-                ChatRepliesNetworking.RequiredClientPayload.TYPE,
-                ChatRepliesNetworking.RequiredClientPayload.CODEC
-        );
         ChatReplies.setApi(this);
         ServerLifecycleEvents.SERVER_STARTED.register(startedServer -> server = startedServer);
         ServerLifecycleEvents.SERVER_STOPPING.register(stoppingServer -> server = null);
         registerCommands();
         registerChatHook();
-        registerClientRequirement();
         LOGGER.info("[Chat Replies] Loaded");
     }
 
@@ -86,14 +78,6 @@ public final class ChatRepliesMod implements ModInitializer, ChatRepliesApi {
                     replyTo
             );
             return false;
-        });
-    }
-
-    private void registerClientRequirement() {
-        ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
-            if (!ServerPlayNetworking.canSend(handler.player, ChatRepliesNetworking.RequiredClientPayload.TYPE)) {
-                handler.disconnect(Component.literal("На этом сервере требуется клиентский мод Chat Replies."));
-            }
         });
     }
 
